@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Sushi1",
+        "price": "15000",
+        "profile": "photo\/1.jpg"
+    },
+    {
+        "name": "Sushi2",
+        "price": "20000",
+        "profile": "photo\/2.jpg"
+    },
+    {
+        "name": "Sushi3",
+        "price": "20000",
+        "profile": "photo\/3.jpg"
+    },
+    {
+        "name": "Sushi4",
+        "price": "23000",
+        "profile": "photo\/4.jpg"
+    },
+    {
+        "name": "Sushi5",
+        "price": "25000",
+        "profile": "photo\/5.jpg"
+    },
+    {
+        "name": "Sushi6",
+        "price": "20000",
+        "profile": "photo\/6.jpg"
+    },
+    {
+        "name": "Sushi 7",
+        "price": "20000",
+        "profile": "photo\/7.jpg"
+    },
+    {
+        "name": "Sushi 8",
+        "price": "30000",
+        "profile": "photo\/8.jpg"
+    },
+    {
+        "name": "Sushi9",
+        "price": "22000",
+        "profile": "photo\/3.jpg"
+    },
+    {
+        "name": "Sushi10",
+        "price": "25000",
+        "profile": "photo\/4.jpg"
+    },
+    {
+        "name": "Sushi11",
+        "price": "40000",
+        "profile": "photo\/1.jpg"
+    },
+    {
+        "name": "Sushi12",
+        "price": "33000",
+        "profile": "photo\/5.jpg"
+    }
+]
