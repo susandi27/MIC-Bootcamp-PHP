@@ -41,7 +41,7 @@
                         <?php
                             $i=1;
                             foreach ($subcategories as $subcategory) {
-                            /*$cid = $subcategory['id'];*/
+                            $id = $subcategory['id'];
                             $name = $subcategory['name'];
                             $cid= $subcategory['category_id'];
                             $cname=$subcategory['cname'];
@@ -52,13 +52,20 @@
                                 <!-- <td><?= $cid; ?></td> -->
                                 <td><?= $cname; ?></td> <!-- because we initial get id and change it name by joining two tables -->
                                 <td>
-                                    <a href="" class="btn btn-warning">
+                                    <a href="subcategory_edit.php?id=<?= $id; ?>" class="btn btn-warning">
                                         <i class="icofont-ui-settings"></i>
                                     </a>
 
-                                    <a href="" class="btn btn-outline-danger">
+                                    <!-- <a href="" class="btn btn-outline-danger">
                                         <i class="icofont-close"></i>
-                                    </a>
+                                    </a> -->
+                                    <!-- post method -->
+                                    <form action="subcategory_delete.php" onsubmit="return confirm('Are you sure wnane to delete?') "method="POST" class="d-inline-block"><!--  because block element -->
+                                        <input type="hidden" name="id" value="<?= $id ?>">
+                                        <button class="btn btn-outline-danger">
+                                            <i class="icofont-close"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                                     

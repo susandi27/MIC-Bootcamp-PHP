@@ -45,13 +45,20 @@
                                 <td> <?= $i++; ?> </td>
                                 <td> <?= $name; ?>  </td>
                                 <td>
-                                    <a href="" class="btn btn-warning">
+                                    <a href="brand_edit.php?id=<?= $cid ?>" class="btn btn-warning">
                                         <i class="icofont-ui-settings"></i>
                                     </a>
 
-                                    <a href="" class="btn btn-outline-danger">
+                                    <!-- <a href="" class="btn btn-outline-danger">
                                         <i class="icofont-close"></i>
-                                    </a>
+                                    </a> -->
+                                    <!-- post method -->
+                                    <form action="brand_delete.php" onsubmit="return confirm('Are you sure wnane to delete?') "method="POST" class="d-inline-block"><!--  because block element -->
+                                        <input type="hidden" name="id" value="<?= $cid ?>">
+                                        <button class="btn btn-outline-danger">
+                                            <i class="icofont-close"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                                     

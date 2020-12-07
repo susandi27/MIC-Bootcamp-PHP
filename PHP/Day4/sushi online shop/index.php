@@ -93,6 +93,7 @@
 
 		//showdata
 		function showdata(){
+			alert('ok');
 			var itemlist=localStorage.getItem("item");
 			if(itemlist){
 				var itemArray=JSON.parse(itemlist);

@@ -28,14 +28,7 @@
     <div class="col-md-12">
         <div class="tile">
             <div class="tile-body">
-                <form action="item_add.php" method="POST" enctype="multipart/form-data">
-
-                    <div class="form-group row">
-                        <label for="photo_id" class="col-sm-2 col-form-label"> Photo </label>
-                        <div class="col-sm-10">
-                            <input type="file" id="photo_id" name="photo">
-                        </div>
-                    </div>
+                <form action="item_add.php" method="POST" enctype="multipart/form-data">                   
                         
                     <div class="form-group row">
                         <label for="name_id" class="col-sm-2 col-form-label"> Code No </label>
@@ -109,6 +102,13 @@
                                 <?php } ?>
                                 
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="photo_id" class="col-sm-2 col-form-label"> Photo </label>
+                        <div class="col-sm-10">
+                            <input type="file" id="photo_id" name="photo">
                         </div>
                     </div>
 

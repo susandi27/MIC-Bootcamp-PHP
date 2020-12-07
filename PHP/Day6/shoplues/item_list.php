@@ -50,6 +50,7 @@
                         <?php
                             $i=1;
                             foreach ($items as $item) {
+                            $id=$item['id'];
                             $codeno = $item['codeno'];
                             $name = $item['name'];
                             $price = $item['price'];
@@ -71,7 +72,7 @@
                                 <td><?= $cname; ?></td>
                                 <td><?= $bname; ?></td>
                                <td>
-                                    <a href="" class="btn btn-warning">
+                                    <a href="item_edit.php?id=<?= $id ?>" class="btn btn-warning">
                                         <i class="icofont-ui-settings"></i>
                                     </a>
 
