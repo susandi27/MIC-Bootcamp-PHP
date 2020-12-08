@@ -41,9 +41,17 @@
 								<textarea class="form-control" id="notes" placeholder="Any Request..."></textarea>
 							</td>
 							<td colspan="3">
-								<button class="btn btn-secondary btn-block mainfullbtncolor checkoutbtn"> 
-									Check Out 
-								</button>
+								<?php
+									if(isset($_SESSION['login_user'])){
+
+								?>
+								<a href="javascript:void(0)" class="btn btn-secondary btn-block mainfullbtncolor checkoutBtn">Check Out </a>
+								
+								<?php }else{ ?> 
+									
+								<a href="login.php" class="btn btn-secondary btn-block mainfullbtncolor">Check Out </a>
+
+							<?php } ?>
 							</td>
 						</tr>
 					</tfoot>

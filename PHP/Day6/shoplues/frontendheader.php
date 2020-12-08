@@ -144,10 +144,10 @@
 				<a href="shoppingcart.php" class="text-decoration-none d-xl-inline d-lg-inline d-md-inline d-sm-none d-none shoppingcartLink"> 
 					<i class="icofont-shopping-cart"></i> 
 					<span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti">  </span>
-					<span id="totalAmount"> </span>
+					<span class="cartTotal"> </span>
 				</a>
 
-				<a href="" class="text-decoration-none d-xl-none d-lg-none d-md-none d-sm-inline-block d-inline-block shoppingcartLink"> 
+				<a href="shoppingcart.php" class="text-decoration-none d-xl-none d-lg-none d-md-none d-sm-inline-block d-inline-block shoppingcartLink"> 
 					<i class="icofont-shopping-cart"></i>
 					<span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti">  </span>
 				</a>
@@ -347,10 +347,10 @@
 			</div>
 			<hr>
 
-			<a href="#"> Login | Signup</a>
+			<a href="login.php"> Login | Signup</a>
 			<hr>
 
-			<a href="#"> Cart [ <span class="cartNoti"> 1 </span> ]  </a>
+			<a href="#"> Cart [ <span class="cartNoti">  </span> ]  </a>
 			<hr>
 
 			<img src="image/download.png" class="img-fluid ml-2 text-center" style="width: 150px">

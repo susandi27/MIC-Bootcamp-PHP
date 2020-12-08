@@ -2,7 +2,7 @@ $(document).ready(function(){
     /* start local storage*/
     showdata();
     cartnoti();
-    checkout();
+    //checkout();
         $(".addtocartBtn").click(function(){
             //alert('ok');
             var id=$(this).data('id');
@@ -39,7 +39,7 @@ $(document).ready(function(){
                     status=true;
                 }
                 // statements
-        });//end  add to card function
+            });
 
             if(status==false){
                 itemArray.push(item);
@@ -50,8 +50,8 @@ $(document).ready(function(){
             localStorage.setItem("item", itemstring);
             showdata();
             cartnoti();
-            checkout();
-        })
+            //checkout();
+        }) //end  add to card function
 
 
         //showdata
@@ -106,7 +106,7 @@ $(document).ready(function(){
                 });
                 html+=`<tr><td colspan="8"><h3 class="text-right"> Total : ${total} Ks</h3></td><tr>`
                 $("#shoppingcart_table").html(html);
-                //$('#totalAmount').html($total);
+                /*$('#totalAmount').text($total);*/
             }
             else{
                 html+=`<div class="col-12"><h5 class="text-center">There are no items in this cart</h5>
@@ -141,7 +141,7 @@ $(document).ready(function(){
             localStorage.setItem("item",itemstring);
             showdata();
             cartnoti();
-            checkout();
+            //checkout();
             }
         })
 
@@ -169,39 +169,93 @@ $(document).ready(function(){
             localStorage.setItem("item",itemstring);
             showdata();
             cartnoti();
-            checkout();
+            //checkout();
             }
         }) //end minus btn function
 
-
+        //start no function
         function cartnoti(){
             //alert('ok');
             var itemlist=localStorage.getItem("item");
             var total=0;
+            var noti= 0 ;
             if(itemlist){
                 var itemArray=JSON.parse(itemlist);
                 itemArray.forEach( function(v,i) {
                     //console.log(v);
-                    total+=v.qty;
-                    // statements
-                });
-                console.log(total);
-                $(".cartNoti").html(total);
+                    var unitprice = v.price;
+                    var discount = v.discount;
+                    var qty = v.qty;
+                    if (discount){
+                        var price = discount;
+                    }
+                    else{
+                        var price = unitprice;
+                    }
+                    var subtotal = price *qty;
 
+                    noti +=qty++;
+                    total +=subtotal ++;
+                })
+                
+                $('.cartNoti').html(noti);
+                $('.cartTotal').html(total+ " Ks");     
             }
             else{
-                $(".cartNoti").html('0');
+                $('.cartNoti').html(0);
+                $('.cartTotal').html(0+ " Ks");   
             }
-
         }
 
-        function checkout(){
+        //end noti function
+
+       /* function checkout(){
             $(".checkoutbtn").click(function(){
                 localStorage.clear();
                 showdata();
                 cartnoti();
             });
         }
-        checkout();
+        checkout();*/
 
-}) //end ready function
+
+        //checkout function
+        $('.checkoutBtn').on('click',function(){
+            var cart=localStorage.getItem("item");
+            var note = $('#notes').val();
+            var total = 0;
+
+            var cartArray = JSON.parse(cart);
+            $.each(cartArray, function(i,v){
+                var unitprice = v.price;
+
+                var discount = v.discount;
+                var qty = v.qty;
+                if (discount){
+                    var price = discount;
+                }
+                else{
+                    var price = unitprice;
+                }
+                var subtotal = price *qty;
+
+                total +=subtotal ++;
+                console.log(unitprice);
+
+                //ajax
+                $.post('storeorder.php',{
+                    carts:cartArray,
+                    note:note,
+                    total:total
+                },function(response){
+                    localStorage.clear();
+                    location.href="ordersuccess.php";
+                });
+            }); //each end
+
+            
+        })
+            //end checkout function
+       
+
+    }) //end ready function
