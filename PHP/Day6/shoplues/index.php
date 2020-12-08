@@ -9,7 +9,7 @@
 
 ?>
 <!-- Carousel -->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   		<ol class="carousel-indicators">
     		<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     		<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -87,7 +87,7 @@
 		                	
 		                    <div class="pad15">
 		                    	
-		                    	<img src="<?= $di_photo ?>" class="img-fluid">
+		                    	<a href="itemdetail.php"><img src="<?= $di_photo ?>" class="img-fluid"></a>
 		                        <p class="text-truncate"><?= $di_name ?></p>
 		                        <p class="item-price">
 		                        	<strike><?= $di_price ?> Ks </strike> 

@@ -1,3 +1,5 @@
 <?php
-	echo "Your order is success";
+	echo "Your order is success."
+	
 ?>
+

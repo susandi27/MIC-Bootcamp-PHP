@@ -123,7 +123,7 @@
                                 </nav>
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                        <img src="<?= $category['photo'];?>" class="img-fluid">
+                                        <img src="<?= $item['photo'];?>" class="img-fluid">
                                     </div>
                                      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                         <input type="file" id="photo_id" name="photo">
