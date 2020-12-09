@@ -7,8 +7,8 @@
 	$price = $_POST['price'];
 	$discount = $_POST['discount'];
 	$description = $_POST['description'];
-	$subcategory_id = $_POST['subcategory_id'];
-	$brand_id = $_POST['brand_id'];
+	$subcategory_id = $_POST['sid'];
+	$brand_id = $_POST['bid'];
 	$oldphoto=$_POST['oldphoto'];
 	$newphoto=$_FILES['photo'];
 	
@@ -21,7 +21,7 @@
 	}else{
 		$fullpath = $oldphoto;
 	}
-	$sql = "UPDATE categories SET name=:value1, photo=:value2,codeno=:value3,price=:value4, discount=:=:value5, description=:value6,  brand_id=:value7, subcategory_id=:value8,WHERE id =:value9";
+	$sql = "UPDATE items SET name=:value1, photo=:value2,codeno=:value3,price=:value4, discount=:value5, description=:value6,  brand_id=:value7, subcategory_id=:value8 WHERE id =:value9";
 	$stmt = $conn->prepare($sql);
 	$stmt->bindParam(':value1',$name);
 	$stmt->bindParam(':value2',$fullpath);
@@ -35,6 +35,6 @@
 
 	$stmt->execute();
 
-	header("location: category_list.php");
+	header("location: item_list.php");
 
 ?>

@@ -8,12 +8,16 @@
     $subcategories = $stmt->fetchAll();
 
 
-    $sql1 = "SELECT * FROM brands ORDER BY id DESC";
-    $stmt1 = $conn->prepare($sql1);
-    $stmt1->execute();
-    $brands = $stmt1->fetchAll();
+    $sql = "SELECT * FROM brands ORDER BY id DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $brands = $stmt->fetchAll();
 
-    
+    $sql = "SELECT * FROM items ORDER BY id DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $items = $stmt->fetchAll();
+
     $id =$_GET['id'];
     $sql = "SELECT * FROM items WHERE id=:value1";
     $stmt = $conn->prepare($sql);
@@ -39,6 +43,8 @@
                 <form action="item_update.php" method="POST" enctype="multipart/form-data">
 
                     <input type="hidden" name="id" value="<?= $item['id']; ?>">
+                    <input type="hidden" name="sid" value="<?= $item['subcategory_id']; ?>">
+                    <input type="hidden" name="bid" value="<?= $item['brand_id']; ?>">
                     <input type="hidden" name="oldphoto" value="<?= $item['photo']; ?>">
                         
                     <div class="form-group row">
@@ -79,18 +85,20 @@
                     <div class="form-group row">
                         <label for="photo_id" class="col-sm-2 col-form-label"> Sub-Category </label>
                         <div class="col-sm-10">
+
+                            
                             <select class="form-control" name="subcategoryid">
                                 <?php
-                                foreach ($subcategories as $subcategory) {
+                                    foreach ($subcategories as $subcategory) {
                                     $id =$subcategory['id'];
-                                    $name=$subcategory['name'];
-                                
+                                    $name=$subcategory['name']; 
+
                                 ?>
-                                <option value="<?= $id; ?>" <?php if($id == $subcategory['category_id']) { echo "selected";} ?> > <?= $name; ?> </option>
+                                <option value="<?= $id; ?>" <?php if($id == $item['subcategory_id']) { echo "selected";} ?> > <?= $name; ?> </option>
 
                                 <?php } ?>
                                 
-                            </select>
+                            </select> 
                         </div>
                     </div>
                     
@@ -104,7 +112,7 @@
                                     $name=$brand['name'];
                                 
                                 ?>
-                                <option value="<?= $id; ?>" <?php if($id == $subcategory['category_id']) { echo "selected";} ?> > <?= $name; ?> </option>
+                                <option value="<?= $id; ?>" <?php if($id == $item['brand_id']) { echo "selected";} ?> > <?= $name; ?> </option>
 
                                 <?php } ?>
                                 

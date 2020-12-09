@@ -1,6 +1,6 @@
 <?php
 	require 'db_connect.php';
-	$id=$_POST['id'];
+	$id=$_GET['id'];
 	$sql='DELETE FROM items WHERE id=:value1';
 	$stmt = $conn->prepare($sql);
 	$stmt->bindParam(':value1',$id);

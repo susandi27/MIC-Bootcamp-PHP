@@ -87,7 +87,9 @@
 		                	
 		                    <div class="pad15">
 		                    	
-		                    	<a href="itemdetail.php"><img src="<?= $di_photo ?>" class="img-fluid"></a>
+		                    	<a href="item_detail.php?id=<?= $di_id ?>" >
+		                    		<img src="<?= $di_photo ?>" class="img-fluid">
+		                    	</a>
 		                        <p class="text-truncate"><?= $di_name ?></p>
 		                        <p class="item-price">
 		                        	<strike><?= $di_price ?> Ks </strike> 
@@ -146,9 +148,10 @@
 		                <div class="item">
 		                	
 		                    <div class="pad15">
-		                    	
-		                    	<img src="<?= $hi_photo ?>" class="img-fluid">
-		    
+		                    	<a href="item_detail.php?id=<?= $hi_id ?>" >
+		                    		<img src="<?= $hi_photo ?>" class="img-fluid">
+		    					</a>
+
 		                        <p class="text-truncate"><?= $hi_name; ?></p>
 		                        <p class="item-price">
 		                        	<?php if($hi_discount){ ?>
@@ -213,8 +216,9 @@
 		                <div class="item">
 		                	
 		                    <div class="pad15">
-		                    	
-		                    	<img src="<?= $ri_photo ?>" class="img-fluid">
+		                    	<a href="item_detail.php?id=<?= $hi_id ?>" >
+		                    		<img src="<?= $ri_photo ?>" class="img-fluid">
+		                    	</a>
 		                        <p class="text-truncate"><?= $ri_name ?></p>
 		                        <p class="item-price">
 		                        	<?php 

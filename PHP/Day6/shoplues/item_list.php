@@ -3,9 +3,9 @@
     require ('backendheader.php');
     $sql = "SELECT items.*,subcategories.id as cid,subcategories.name as cname, 
             brands.id as bid, brands.name as bname
-            FROM items LEFT JOIN subcategories 
+            FROM items INNER JOIN subcategories 
             ON items.subcategory_id=subcategories.id
-            LEFT JOIN brands ON items.brand_id=brands.id
+            INNER JOIN brands ON items.brand_id=brands.id
             ORDER BY id DESC";
 
     $stmt = $conn->prepare($sql);
@@ -41,7 +41,7 @@
                                 <th>Price</th>
                                 <th>Discount</th>
                                 <th>Description</th>
-                                <th>Category</th>
+                                <th>Sub Category</th>
                                 <th>Brand</th>
                                 <th>Action</th>
                             </tr>
@@ -72,11 +72,11 @@
                                 <td><?= $cname; ?></td>
                                 <td><?= $bname; ?></td>
                                <td>
-                                    <a href="item_edit.php?id=<?= $id ?>" class="btn btn-warning">
+                                    <a href="item_edit.php?id=<?= $id; ?>" class="btn btn-warning">
                                         <i class="icofont-ui-settings"></i>
                                     </a>
 
-                                    <a href="" class="btn btn-outline-danger">
+                                    <a href="item_delete.php?id=<?= $id; ?>" class="btn btn-outline-danger">
                                         <i class="icofont-close"></i>
                                     </a>
                                 </td>

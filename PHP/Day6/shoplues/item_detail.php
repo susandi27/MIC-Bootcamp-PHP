@@ -1,5 +1,27 @@
 <?php
+	require "db_connect.php";
 	require "frontendheader.php";
+
+	$id =$_GET['id'];
+	//echo $id;
+    $sql = "SELECT * FROM items WHERE id=:value1";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':value1',$id);
+    $stmt->execute();
+    $item = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
+   $sql = "SELECT items.*, brands.name as bname
+   			FROM items INNER JOIN brands
+   			ON items.brand_id=brands.id";
+
+    $stmt = $conn->prepare($sql);
+    //$stmt->bindParam(':value1',$id);
+    $stmt->execute();
+    $items = $stmt->fetch(PDO::FETCH_ASSOC);
+    //var_dump($items['name']);die();
+
 ?>	
 	<!-- Subcategory Title -->
 	<div class="jumbotron jumbotron-fluid subtitle">
@@ -31,13 +53,13 @@
 
 		<div class="row mt-5">
 			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-				<img src="image/item/saisai_one.jpg" class="img-fluid">
+				<img src="<?= $item['photo'] ?>" class="img-fluid">
 			</div>	
 
 
 			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
 				
-				<h4> Item Name </h4>
+				<h4> <?= $item['name']; ?></h4>
 
 				<div class="star-rating">
 					<ul class="list-inline">
@@ -60,12 +82,13 @@
 
 				<p> 
 					<span class="text-uppercase "> Current Price : </span>
-					<span class="maincolor ml-3 font-weight-bolder"> 180,000 Ks </span>
+					<span class="maincolor ml-3 font-weight-bolder"> <?= $item['price']; ?> Ks </span>
 				</p>
 
 				<p> 
 					<span class="text-uppercase "> Brand : </span>
-					<span class="ml-3"> <a href="" class="text-decoration-none text-muted"> Brand Name </a> </span>
+					<span class="ml-3"> <a href="" class="text-decoration-none text-muted"> 
+						<?= $items['name']; ?> </a> </span>
 				</p>
 
 
@@ -82,30 +105,25 @@
 				<hr>
 			</div>
 			
+			<?php
+		        $sid=$item['subcategory_id']; //only one subcategory
+				$sql = "SELECT * FROM items WHERE subcategory_id=:value1 LIMIT 4";
+				$stmt = $conn->prepare($sql);
+				$stmt->bindParam(':value1',$sid);
+				$stmt->execute();
 
+				$randomItems = $stmt->fetchAll();
+
+				foreach ($randomItems as $randomItem) {
+		        $ri_id = $randomItem['id'];
+		        $ri_photo = $randomItem['photo'];
+			?>
 			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
 				<a href="">
-					<img src="image/item/saisai_two.jpg" class="img-fluid">
+					<img src="<?= $item['photo'] ?>" class="img-fluid">
 				</a>
 			</div>
-
-			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-				<a href="">
-					<img src="image/item/saisai_three.jpg" class="img-fluid">
-				</a>
-			</div>
-
-			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-				<a href="">
-					<img src="image/item/saisai_four.jpg" class="img-fluid">
-				</a>
-			</div>
-
-			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-				<a href="">
-					<img src="image/item/saisai_four.jpg" class="img-fluid">
-				</a>
-			</div>
+		<?php } ?>
 		</div>
 
 		
