@@ -13,6 +13,7 @@
         <script type="text/javascript">
           $('#sampleTable').DataTable();
           $('.display').DataTable();
+          
         </script>
         <!-- Google analytics script-->
         <script type="text/javascript">
@@ -25,5 +26,6 @@
           	ga('send', 'pageview');
           }
         </script>
+        <script type="text/javascript" src="js/backend_ordersearch.js"></script>
     </body>
 </html>

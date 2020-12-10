@@ -105,7 +105,8 @@
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>
-    <script type="text/javascript" src="js/custom1.js"></script>
+    <script type="text/javascript" src="js/custom1.js"></script> <!-- localstorage js -->
+    <script type="text/javascript" src="js/backend_ordersearch.js"></script>
 
     <!-- Owl Carousel -->
     <script type="text/javascript" src="js/owl.carousel.js"></script>

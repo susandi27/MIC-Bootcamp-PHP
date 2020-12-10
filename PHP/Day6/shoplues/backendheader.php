@@ -1,5 +1,15 @@
   
-<?= session_start(); ?>
+<?= 
+    session_start(); 
+    if(!isset($_SESSION['login_user'])){
+        header('location: login.php');
+    }
+    if(isset($_SESSION['login_user'])){
+        if($_SESSION['login_user']['rolename']== "customer"){
+            header('location: index.php');
+        }
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
