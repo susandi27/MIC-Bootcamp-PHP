@@ -22,11 +22,7 @@
 	$stmt = $conn->prepare($sql);
 	$stmt->bindParam(':value2',$brandid);
 	$stmt->execute();
-	$items = $stmt->fetch(PDO::FETCH_ASSOC);
-
-	//var_dump($items);
-	/*$item_name=$items['name'];
-	echo $item_name;die();*/
+	$items = $stmt->fetchAll();
 
 ?>
 	<!-- Subcategory Title -->
@@ -43,7 +39,7 @@
 		<div class="row mt-5">
             <div class="col">
                 <div class="bbb_viewed_title_container">
-                    <h3 class="bbb_viewed_title"> Brand Category Name  </h3>
+                    <h3 class="bbb_viewed_title"> <?= $brand_name; ?>  </h3>
                     <div class="bbb_viewed_nav_container">
                         <div class="bbb_viewed_nav bbb_viewed_prev"><i class="icofont-rounded-left"></i></div>
                         <div class="bbb_viewed_nav bbb_viewed_next"><i class="icofont-rounded-right"></i></div>
@@ -51,30 +47,31 @@
                 </div>
                 <div class="bbb_viewed_slider_container">
                     <div class="owl-carousel owl-theme bbb_viewed_slider">
+                    	<?php 
+										foreach ($items as $item) {
+											$i_id = $item['id'];
+							                $i_photo = $item['photo'];
+							                $i_name = $item['name'];
+							                $i_price = $item['price'];
+							                $i_discount=$item['discount'];
+							                $i_codeno = $item['codeno'];
+							                //echo $i_name;die();	
+										?>
 					    <div class="owl-item">
-					    	<?php 
-									foreach ($items as $item) {
-										$i_id = $item['id'];
-					                	$i_photo = $item['photo'];
-					                	$i_name = $item['name'];
-					                	$i_price = $item['price'];
-					                	$i_discount=$item['discount'];
-					                	$i_codeno = $item['codeno'];
-					                	//echo $i_name;die();
-										
-								?>
+					    	
 
 					        <div class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
 					        	
 					            <div class="pad15">
+					            	
 					        		<img src="<?= $i_photo; ?>" class="img-fluid">
 					            	<p class="text-truncate"><?= $i_name; ?></p>
 					            	<p class="item-price">
 					            	<?php if($i_discount){ ?>
-		                        		<strike><?php $i_price; ?> Ks </strike> 
-		                        		<span class="d-block"><?php $i_discount; ?> Ks</span>
+		                        		<strike><?php echo $i_price; ?> Ks </strike> 
+		                        		<span class="d-block"><?php echo $i_discount; ?> Ks</span>
 		                        	<?php }else{ ?>
-		                        		<span class="d-block"><?php $i_price; ?> Ks</span>
+		                        		<span class="d-block"><?php echo $i_price; ?> Ks</span>
 		                       	 	<?php } ?>
 		                       	 	</p>
 
@@ -90,18 +87,19 @@
 									</div>
 
 									<a href="shoppingcart.php" class="addtocartBtn text-decoration-none">Add to Cart</a>
+									
 					        	</div>
-					        
+					        	
 					        </div>
-					        <?php } ?>
+					       
 					    </div>
-
+					     <?php } ?>
 					</div>
                 </div>
             </div>
         </div>
 
-        <div class="row mt-5">
+        <!-- <div class="row mt-5">
             <div class="col">
                 <div class="bbb_viewed_title_container">
                     <h3 class="bbb_viewed_title"> <?php $brand_name ?>  </h3>
@@ -160,7 +158,7 @@
 					</div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 	</div>
 	
