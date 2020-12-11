@@ -44,7 +44,7 @@ $(document).ready(function(){
 						var date = v.orderdate;
 
 						if(status == "Order"){
-							var actionBtn = `<a href="" class="btn btn-outline-info"> 
+							var actionBtn = `<a href="invoice.php" class="btn btn-outline-info"> 
                                                 <i class="icofont-info"></i>
                                             </a>
                                             <a href="orderstatus_change.php?id=${id}&status=0" class="btn btn-outline-success"> 
@@ -54,7 +54,7 @@ $(document).ready(function(){
                                                 <i class="icofont-close"></i>
                                             </a>`;
 						}else{
-							var actionBtn =`<a href="" class="btn btn-outline-info"> 
+							var actionBtn =`<a href="invoice.php" class="btn btn-outline-info"> 
                                                 <i class="icofont-info"></i>
                                             </a>`;
 						}

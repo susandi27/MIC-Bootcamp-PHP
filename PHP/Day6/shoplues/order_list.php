@@ -112,7 +112,7 @@
                                         <td> <?= $pending_voucherno; ?> </td>
                                         <td> <?= $pending_total; ?> </td>
                                         <td>
-                                            <a href="" class="btn btn-outline-info"> 
+                                            <a href="invoice.php" class="btn btn-outline-info"> 
                                                 <i class="icofont-info"></i>
                                             </a>
 
@@ -161,7 +161,7 @@
                                         <td> <?= $confirm_voucherno; ?> </td>
                                         <td> <?= $confirm_total; ?> </td>
                                         <td>
-                                            <a href="" class="btn btn-outline-info"> 
+                                            <a href="invoice.php" class="btn btn-outline-info"> 
                                                 <i class="icofont-info"></i>
                                             </a>
                                         </td>
@@ -201,7 +201,7 @@
                                         <td> <?= $cancel_voucherno; ?> </td>
                                         <td> <?= $cancel_total; ?> </td>
                                         <td>
-                                            <a href="" class="btn btn-outline-info"> 
+                                            <a href="invoice.php" class="btn btn-outline-info"> 
                                                 <i class="icofont-info"></i>
                                             </a>
                                         </td>

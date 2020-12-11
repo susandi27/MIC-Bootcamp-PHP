@@ -88,7 +88,7 @@
 				<p> 
 					<span class="text-uppercase "> Brand : </span>
 					<span class="ml-3"> <a href="" class="text-decoration-none text-muted"> 
-						<?= $items['name']; ?> </a> </span>
+						<?= $items['bname']; ?> </a> </span>
 				</p>
 
 

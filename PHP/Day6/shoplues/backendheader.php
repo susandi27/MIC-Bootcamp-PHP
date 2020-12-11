@@ -1,4 +1,3 @@
-  
 <?= 
     session_start(); 
     if(!isset($_SESSION['login_user'])){
@@ -43,6 +42,8 @@
 
         <!-- Main CSS-->
         <link rel="stylesheet" type="text/css" href="backend/css/main.css">
+
+  
     </head>
     
     <body class="app sidebar-mini">

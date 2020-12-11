@@ -200,7 +200,7 @@
                 						$sid = $subcategory['id'];
                 						$sname = $subcategory['name'];
 				            	?>
-				              		<li><a class="dropdown-item" href="#"><?= $sname ?></a></li>
+				              		<li><a class="dropdown-item" href="subcategory.php?id=<?= $sid ?>"><?= $sname ?></a></li>
 				              	<?php } ?>
 				              
 				            </ul>
@@ -228,7 +228,7 @@
           					$bid=$brand['id'];
           					$bname=$brand['name'];
           				?>
-            			<a class="dropdown-item" href="#"><?= $bname; ?></a>           			
+            			<a class="dropdown-item" href="brand.php?id=<?= $bid; ?>"><?= $bname; ?></a>           			
             		<?php } ?>
           			</div>
         		</div>
@@ -308,10 +308,10 @@
 					$subcategories = $stmt->fetchAll();
 				            		
 				    foreach ($subcategories as $subcategory) {
-                	$sid = $subcategory['id'];
+                	$scid = $subcategory['id'];
                 	$sname = $subcategory['name'];
 				?>
-			    <a href="" class="py-2"> <?= $sname; ?> </a>
+			    <a href="subcategory.php?id=<?= $scid ?>" class="py-2"> <?= $sname; ?> </a>
 			    <?php  } ?>
 			</div>
 			<hr>
@@ -326,10 +326,16 @@
 
 		  	</a>
 
+		  	<?php
+          		foreach($brands as $brand){
+          			$b_id=$brand['id'];
+          			$bname=$brand['name'];
+          		?>        			
+            		
 			<div class="collapse sidebardropdown_container_category mt-3" id="brand">
-			    <a href="" class="py-2">  </a>
+			    <a href="brand.php?id=<?= $b_id; ?>" class="py-2"><?= $bname; ?>  </a>
 			</div>
-			
+			<?php } ?>
 			
 			<hr>
 
