@@ -8,8 +8,14 @@
         <script src="backend/js/plugins/pace.min.js"></script>
         <!-- Page specific javascripts-->
         <!-- Data table plugin-->
-        <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript" src="backend/js/plugins/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="backend/js/plugins/dataTables.bootstrap.min.js"></script>
+
+        <!-- ordersearch and linechart -->
+        <script type="text/javascript" src="js/backend_ordersearch.js"></script>
+        <script type="text/javascript" src="backend/js/plugins/chart.js"></script>
+
+
         <script type="text/javascript">
           $('#sampleTable').DataTable();
           $('.display').DataTable();
@@ -26,6 +32,6 @@
           	ga('send', 'pageview');
           }
         </script>
-        <script type="text/javascript" src="js/backend_ordersearch.js"></script>
+
     </body>
 </html>

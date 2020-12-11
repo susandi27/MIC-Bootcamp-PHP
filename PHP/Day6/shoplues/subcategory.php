@@ -28,7 +28,7 @@
 	$stmt->bindParam(':value3',$category_id);
 	$stmt->execute();
 	$subcategories = $stmt->fetchALL();
-
+	//var_dump($subcategories);die();
 
 	//=============================================
 	//items
@@ -78,9 +78,9 @@
 					$sname = $subcategory['name'];
 				 ?>
 				 	<!-- <li class="list-group-item active"> -->
-				 	<!-- <?php //echo $sname;die(); ?> -->
+				 	<!-- <?php //echo $sname;die(); ?>  -->
 				  	<li class="list-group-item <?php if($sid==$subcategory_id) echo "active" ?>" > 
-				  		<a href="subcategory.php?id=<?= $sid; ?>" class="text-decoration-none secondarycolor"><?php $sname; ?>
+				  		<a href="subcategory.php?id=<?= $sid; ?>" class="text-decoration-none secondarycolor"><?php echo $sname; ?>
 				  		</a>
 				  	</li>
 				  	<?php } ?>
