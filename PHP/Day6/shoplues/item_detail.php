@@ -3,30 +3,51 @@
 	require "frontendheader.php";
 
 	$id =$_GET['id'];
-	//echo $id;
-    $sql = "SELECT * FROM items WHERE id=:value1";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':value1',$id);
-    $stmt->execute();
-    $item = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-
-   $sql = "SELECT items.*, brands.name as bname
+	
+   	$sql = "SELECT items.*, brands.name as bname
    			FROM items INNER JOIN brands
-   			ON items.brand_id=brands.id";
+   			ON items.brand_id=brands.id
+   			WHERE items.id=:value2";
 
     $stmt = $conn->prepare($sql);
-    //$stmt->bindParam(':value1',$id);
+    $stmt->bindParam(':value2',$id);
     $stmt->execute();
     $items = $stmt->fetch(PDO::FETCH_ASSOC);
-    //var_dump($items['name']);die();
 
+    //=============================================
+    //subcategory
+    $sql = "SELECT items.*, subcategories.name as sname
+ 			FROM items INNER JOIN subcategories
+ 			ON items.subcategory_id=subcategories.id
+ 			WHERE items.id=:value1";
+ 	$stmt = $conn->prepare($sql);
+    $stmt->bindParam(':value1',$id);
+    $stmt->execute();
+    $subcategories = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $subcategory_name = $subcategories['sname'];
+    //===============================================
+
+    //categories
+    $sql= "SELECT items.*,categories.name as cname
+			FROM items INNER JOIN subcategories
+			ON items.subcategory_id=subcategories.id
+			INNER JOIN categories ON categories.id= subcategories.category_id
+			WHERE items.id=:value3";
+	$stmt = $conn->prepare($sql);
+	$stmt->bindParam(':value3',$id);
+    $stmt->execute();
+    $categories = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $category_name = $categories['cname'];
+    //echo $category_name;die();
+
+	
 ?>	
 	<!-- Subcategory Title -->
 	<div class="jumbotron jumbotron-fluid subtitle">
   		<div class="container">
-    		<h1 class="text-center text-white"> Code Number </h1>
+    		<h1 class="text-center text-white"> <?= $items['codeno'] ?> </h1>
   		</div>
 	</div>
 	
@@ -43,23 +64,23 @@
 		    		<a href="#" class="text-decoration-none secondarycolor"> Category </a>
 		    	</li>
 		    	<li class="breadcrumb-item">
-		    		<a href="#" class="text-decoration-none secondarycolor"> Category Name </a>
+		    		<a href="#" class="text-decoration-none secondarycolor"> <?= $category_name; ?> </a>
 		    	</li>
 		    	<li class="breadcrumb-item active" aria-current="page">
-					Subcategory Name
+					<?= $subcategory_name; ?>
 		    	</li>
 		  	</ol>
 		</nav>
 
 		<div class="row mt-5">
 			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-				<img src="<?= $item['photo'] ?>" class="img-fluid">
+				<img src="<?= $items['photo'] ?>" class="img-fluid">
 			</div>	
 
 
 			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
 				
-				<h4> <?= $item['name']; ?></h4>
+				<h4> <?= $items['name']; ?></h4>
 
 				<div class="star-rating">
 					<ul class="list-inline">
@@ -82,7 +103,7 @@
 
 				<p> 
 					<span class="text-uppercase "> Current Price : </span>
-					<span class="maincolor ml-3 font-weight-bolder"> <?= $item['price']; ?> Ks </span>
+					<span class="maincolor ml-3 font-weight-bolder"> <?= $items['price']; ?> Ks </span>
 				</p>
 
 				<p> 
@@ -106,12 +127,12 @@
 			</div>
 			
 			<?php
-		        $sid=$item['subcategory_id']; //only one subcategory
+		        $sid=$items['subcategory_id']; //only one subcategory
+		        //echo $sid;die();
 				$sql = "SELECT * FROM items WHERE subcategory_id=:value1 LIMIT 4";
 				$stmt = $conn->prepare($sql);
 				$stmt->bindParam(':value1',$sid);
 				$stmt->execute();
-
 				$randomItems = $stmt->fetchAll();
 
 				foreach ($randomItems as $randomItem) {
@@ -120,7 +141,7 @@
 			?>
 			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
 				<a href="">
-					<img src="<?= $item['photo'] ?>" class="img-fluid">
+					<img src="<?= $ri_photo = $randomItem['photo']; ?>" class="img-fluid">
 				</a>
 			</div>
 		<?php } ?>

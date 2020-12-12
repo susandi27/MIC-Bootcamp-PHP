@@ -54,8 +54,7 @@
 							                $i_name = $item['name'];
 							                $i_price = $item['price'];
 							                $i_discount=$item['discount'];
-							                $i_codeno = $item['codeno'];
-							                //echo $i_name;die();	
+							                $i_codeno = $item['codeno'];	
 										?>
 					    <div class="owl-item">
 					    	
@@ -86,7 +85,7 @@
 										</ul>
 									</div>
 
-									<a href="shoppingcart.php" class="addtocartBtn text-decoration-none">Add to Cart</a>
+									<a href="#" class="addtocartBtn text-decoration-none" data-id='<?= $i_id ?>' data-name='<?= $i_name ?>'  data-photo= '<?= $i_photo ?>' data-codeno='<?= $i_codeno ?>' data-price='<?= $i_price ?>' data-discount='<?= $i_discount ?>' >Add to Cart</a>
 									
 					        	</div>
 					        	

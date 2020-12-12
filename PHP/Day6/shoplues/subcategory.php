@@ -37,9 +37,6 @@
 	$stmt->bindParam(':value2',$subcategory_id);
 	$stmt->execute();
 	$items = $stmt->fetchALL();
-	//var_dump($items);die();
-
-	//var_dump($items);die();
 ?>
 <!-- Subcategory Title -->
 	<div class="jumbotron jumbotron-fluid subtitle">
@@ -55,7 +52,7 @@
 		<nav aria-label="breadcrumb ">
 		  	<ol class="breadcrumb bg-transparent">
 		    	<li class="breadcrumb-item">
-		    		<a href="#" class="text-decoration-none secondarycolor"> Home </a>
+		    		<a href="index.php" class="text-decoration-none secondarycolor"> Home </a>
 		    	</li>
 		    	<li class="breadcrumb-item">
 		    		<a href="#" class="text-decoration-none secondarycolor"> Category </a>
@@ -77,8 +74,6 @@
 					$sid = $subcategory['id'];
 					$sname = $subcategory['name'];
 				 ?>
-				 	<!-- <li class="list-group-item active"> -->
-				 	<!-- <?php //echo $sname;die(); ?>  -->
 				  	<li class="list-group-item <?php if($sid==$subcategory_id) echo "active" ?>" > 
 				  		<a href="subcategory.php?id=<?= $sid; ?>" class="text-decoration-none secondarycolor"><?php echo $sname; ?>
 				  		</a>
@@ -110,10 +105,10 @@
 						    	
 						    	<p class="item-price">
 						    		<?php if($i_discount){ ?>
-		                        		<strike><?php $i_price; ?> Ks </strike> 
-		                        		<span class="d-block"><?php $i_discount; ?> Ks</span>
+		                        		<strike><?php echo $i_price; ?> Ks </strike> 
+		                        		<span class="d-block"><?php echo $i_discount; ?> Ks</span>
 		                        	<?php }else{ ?>
-		                        		<span class="d-block"><?php $i_price; ?> Ks</span>
+		                        		<span class="d-block"><?php echo $i_price; ?> Ks</span>
 		                       	 	<?php } ?>
 		                        </p>
 
@@ -123,11 +118,11 @@
 										<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
 										<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
 										<li class="list-inline-item"><i class='bx bxs-star' ></i></li>
-										<li class="list-inline-item"><i class='bx bxs-star-half' ></i></li>
+										<li class="list-inline-item"><i class='bx bxs-star-half'></i></li>
 									</ul>
 								</div>
 
-								<a href="shoppingcart.php" class="addtocartBtn text-decoration-none">Add to Cart</a>
+								<a href="#" class="addtocartBtn text-decoration-none" data-id='<?= $i_id ?>' data-name='<?= $i_name ?>'  data-photo= '<?= $i_photo ?>' data-codeno='<?= $i_codeno ?>' data-price='<?= $i_price ?>' data-discount='<?= $i_discount ?>' >Add to Cart</a>
 						  	</div>
 						  
 						</div>
@@ -163,3 +158,7 @@
 			</div>
 		</div>	
 	</div>
+
+<?php
+	require 'frontendfooter.php';
+?>

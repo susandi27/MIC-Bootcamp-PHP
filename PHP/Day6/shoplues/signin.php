@@ -35,7 +35,7 @@
 		$_SESSION['login_user'] = $user;
 
 		if($user['rolename']=='admin'){
-			header('location: category_list.php');
+			header('location: dashboard.php');
 		}
 		else{
 			header('location: index.php');

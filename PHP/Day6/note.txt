@@ -1,0 +1,5 @@
+cpanel
+----------
+db name : shoplues
+username: shopluesadmin
+password: @dm1n2020
